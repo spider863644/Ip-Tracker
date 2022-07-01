@@ -1,6 +1,14 @@
 #!/usr/bin/python 3
 import os
-import urllib.request, json, colorama, pyfiglet
+import urllib.request, json
+try:
+   import colorama
+except:
+    os.system("pip install colorama")
+try:
+    import pyfiglet
+except:
+    os.system("pip install pyfiglet")
 from colorama import *
 auth = '1840e53e-0a8b-4d4d-b4e6-4d34d1033d91';
 import time as t
