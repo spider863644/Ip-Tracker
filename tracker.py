@@ -1,31 +1,33 @@
 #!/usr/bin/python 3
 import os
+import urllib.request, json, colorama, pyfiglet
+from colorama import *
+auth = '1840e53e-0a8b-4d4d-b4e6-4d34d1033d91';
 import time as t
-t.sleep(3)
+t.sleep(2)
 os.system("clear")
-os.system("""apt update && apt install figlet
-clear""")
-
 def loop():
+    head = pyfiglet.figlet_format("Ip - Tracker")
     os.system("clear")
-    os.system("figlet Ip-Tracker")
-    print("""
+    print(Fore.GREEN + head)
+    print(Fore.YELLOW + """
     [+]Tool Name:Ip Tracker
     [+]Creator:Spider Anongreyhat
     [+]Team:Termuxhackz Society
     [+]Whatsapp:+2349052863644
     [+]Github:https://github.com/spider863644
-    [+]  Credit goes to anonyminhack5""")
-    print(""" ============================================""")
+    [+]Credit goes to AnonyminHack5
+    [+]Version: V1.1.0""")
+    print(Fore.BLUE + """ ============================================""")
     #print("Usage:Iptracker [Ip address]\n\nExample:Iptracker 192.168.1.95")
-    print("""
+    print(Fore.GREEN + """
     Type \"show\" to show all command 
     
     """)
     def track():
-        tip = input("Iptracker> ")
+        tip = input(Fore.MAGENTA + "Iptracker > " + Style.RESET_ALL)
         if tip == "help":
-            print("""
+            print(Fore.BLUE + """
             show :  Its Display all commands
             iptracker :  This is used for tracking an Ip address
             help :  Its display how to use this tool
@@ -35,7 +37,7 @@ def loop():
             """)
             track()
         elif tip == "show":
-            print("""
+            print(Fore.BLUE + """
             This are the available commands
             help
             show
@@ -45,46 +47,43 @@ def loop():
             """)
             track()
         elif tip == "exit":
-            print("Thanks for using my tool\nIf you find any error,donot hestitate to message me on whatsapp")
+            print(Fore.YELLOW + "Thanks for using my tool\nIf you find any error,donot hestitate to message me on whatsapp")
             exit()
         elif tip == "iptracker":
-            print("""________________________________Track Ip____________________________""")
-            print("""Choose an Operating system you are using for ip tracker
-            [1]Linux
-            [2]Termux
+            print(Fore.GREEN + """________________________________Track Ip____________________________""")
+            print("""
             """)
-            oos = input("iptracker> ")
-            if oos == "1":
-                os.system("sudo apt install w3m")
-            elif oos == "2":
-                os.system("apt install w3m")
-            else:
-                print("U choose an Invalid Operating system\nChoosing termux as a default Operating System")
-                os.system("apt install w3m")
-            ip = (input("Enter IP Address "))
-            url = "w3m https://www.melissa.com/v2/lookups/iplocation/ip/?ip=" + ip + "&site="
-            os.system(url)
             
+            ip = (input(Fore.YELLOW + Back. RED + "Enter IP Address :" + Style.RESET_ALL + " "))
+            url = 'https://ipfind.co/?auth=' + auth + '&ip=' + ip;
+            try:
+                response = urllib.request.urlopen(url)
+                print(Fore.CYAN + " Fetching data from " + ip)
+                t. sleep(2)
+                data = json.loads(response.read())
+                print(Fore.YELLOW + data)
+            except:
+                print(Fore.RED + "Invalid IP address")
+                loop()
         elif tip == "update":
-            print("Updating Ip Tracker")
+            print(Fore.GREEN + "Updating Ip Tracker")
             os.system("""
             cd
             rm -f -r Ip-Tracker
             git clone https://github.com/spider863644/Ip-Tracker
             """)
-            print("""Now type the following command
+            print(Fore.BLUE + """Now type the following command
             cd $HOME
             cd Ip-Tracker
             python3 tracker.py
             """)
         else:
-            print("Invalid Command!")
-            t.sleep(5)
-            print("")
+            print(Fore.RED + "Invalid Command!")
+            t.sleep(3)
             track()
     track()
             
-    cont = input("Would you like to track another IP address? [y/n] ")
+    cont = input(Fore.YELLOW + Back. RED + "Would you like to track another IP address? [y/n] " + Style.RESET_ALL + " ")
     if cont == "y" or cont == "Y":
         loop()
     else:
