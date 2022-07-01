@@ -54,16 +54,17 @@ def loop():
             print("""
             """)
             
-            ip = (input(Fore.YELLOW + Back. RED + "Enter IP Address :" + Style.RESET_ALL + " "))
+            ip = (input(Fore.YELLOW + Back. RED + "Enter IP Address : " + Style.RESET_ALL + ""))
             url = 'https://ipfind.co/?auth=' + auth + '&ip=' + ip;
             try:
                 response = urllib.request.urlopen(url)
                 print(Fore.CYAN + " Fetching data from " + ip)
                 t. sleep(2)
                 data = json.loads(response.read())
-                print(Fore.YELLOW + data)
+                print(Fore.YELLOW,  data)
             except:
                 print(Fore.RED + "Invalid IP address")
+                t. sleep(2)
                 loop()
         elif tip == "update":
             print(Fore.GREEN + "Updating Ip Tracker")
