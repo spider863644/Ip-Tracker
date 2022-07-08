@@ -80,7 +80,7 @@ def loop():
             cd
             rm -f -r Ip-Tracker
             git clone https://github.com/spider863644/Ip-Tracker
-            cd
+            
             """)
             
             print(Fore.BLUE + """Now type the following command
