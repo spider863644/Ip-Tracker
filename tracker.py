@@ -82,12 +82,13 @@ def loop():
             git clone https://github.com/spider863644/Ip-Tracker
             cd
             """)
-            exit()
+            
             print(Fore.BLUE + """Now type the following command
             cd $HOME
             cd Ip-Tracker
             python3 tracker.py
             """)
+            exit()
         else:
             print(Fore.RED + "Invalid Command!")
             t.sleep(3)
