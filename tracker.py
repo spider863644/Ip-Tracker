@@ -1,6 +1,9 @@
 #!/usr/bin/python 3
 import os
-import urllib.request, json
+try:
+    import requests
+except:
+    os.system ("pip install requests")
 try:
    import colorama
 except:
@@ -25,7 +28,7 @@ def loop():
     [+]Whatsapp:+2349052863644
     [+]Github:https://github.com/spider863644
     [+]Credit goes to AnonyminHack5
-    [+]Version: V1.1.0""")
+    [+]Version: V1.4.0""")
     print(Fore.BLUE + """ ============================================""")
     #print("Usage:Iptracker [Ip address]\n\nExample:Iptracker 192.168.1.95")
     print(Fore.GREEN + """
@@ -63,17 +66,40 @@ def loop():
             """)
             
             ip = (input(Fore.YELLOW + Back. RED + "Enter IP Address : " + Style.RESET_ALL + ""))
-            url = 'https://ipfind.co/?auth=' + auth + '&ip=' + ip;
-            try:
-                response = urllib.request.urlopen(url)
-                print(Fore.CYAN + " Fetching data from " + ip)
-                t. sleep(2)
-                data = json.loads(response.read())
-                print(Fore.YELLOW,  data)
-            except:
-                print(Fore.RED + "Invalid IP address")
-                t. sleep(2)
-                loop()
+            print (Fore.CYAN + " Fetching data from " + ip)
+            def get_location():
+                ip_address = ip
+                response = requests.get(f'https://ipapi.co/{ip_address}/json/').json()
+              
+                location_data = {
+                "Ip Address" : ip_address, 
+                "city" : response.get("city"),
+                "region" : response.get("region"),
+                "country" : response.get("country_name"),
+                "Ip Address Type" : response.get("version"),
+                "Region Code" : response.get("region_code"), 
+                "Postal Code" : response.get("postal"), 
+                "Latitude" : response.get(str("latitude")), 
+                "Longitude" : response.get(str("longitude")), 
+                "TimeZone" : response.get("timezone"), 
+                "Country code" : response.get("country_calling_code"), 
+                "Currency" : response.get("currency"), 
+                "Currency Name" : response.get("currency_name") , 
+                "Languages" : response.get("languages"), 
+                "Country Area" : response.get("country_area"), 
+                "Population" : response.get("country_population"),
+                "ASN" : response.get("asn"), 
+                "Organization" : response.get("org")
+               
+                }
+                global url
+        
+                return location_data
+                
+
+
+            print(Fore.YELLOW, get_location())
+            
         elif tip == "update":
             print(Fore.GREEN + "Updating Ip Tracker")
             os.system("""
