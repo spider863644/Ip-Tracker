@@ -100,7 +100,7 @@ def loop():
                 long = str(longitude)
                 
                 global url
-                url = "https://google.com/maps/places/" + lat +  "," + long + "/@" + lat + "," + long + ",16z"
+                url = "https://google.com/maps/place/" + lat +  "," + long + "/@" + lat + "," + long + ",16z"
         
                 return location_data
                 
@@ -134,7 +134,7 @@ def loop():
             track()
     track()
             
-    cont = input(Fore.YELLOW + Back. RED + "\n\nWould you like to track another IP address? [y/n] " + Style.RESET_ALL + " ")
+    cont = input("\n\n" + Fore.YELLOW + Back. RED + "Would you like to track another IP address? [y/n] " + Style.RESET_ALL + " ")
     if cont == "y" or cont == "Y":
         loop()
     else:
