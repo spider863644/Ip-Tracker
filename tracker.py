@@ -28,7 +28,7 @@ def loop():
     [+]Whatsapp:+2349052863644
     [+]Github:https://github.com/spider863644
     [+]Credit goes to AnonyminHack5
-    [+]Version: V1.4.0""")
+    [+]Version: V1.5""")
     print(Fore.BLUE + """ ============================================""")
     #print("Usage:Iptracker [Ip address]\n\nExample:Iptracker 192.168.1.95")
     print(Fore.GREEN + """
@@ -92,13 +92,26 @@ def loop():
                 "Organization" : response.get("org")
                
                 }
+                latitude = response.get("latitude")
+                global lat
+                lat = str(latitude)
+                longitude = response.get("longitude")
+                global long
+                long = str(longitude)
+                
                 global url
+                url = "https://google.com/maps/places/" + lat +  "," + long + "/@" + lat + "," + long + ",16z"
         
                 return location_data
                 
 
 
             print(Fore.YELLOW, get_location())
+            print(Fore.YELLOW + "\nGoogle Maps: " + Fore.GREEN + url)
+            opn = "xdg-open " + url
+            map = input (Fore.CYAN + "\n\nDo you want to open location on google map? [yes/no]: " + Style.RESET_ALL)
+            if map == "yes" or map == "Yes":
+                os.system(opn)
             
         elif tip == "update":
             print(Fore.GREEN + "Updating Ip Tracker")
@@ -121,7 +134,7 @@ def loop():
             track()
     track()
             
-    cont = input(Fore.YELLOW + Back. RED + "Would you like to track another IP address? [y/n] " + Style.RESET_ALL + " ")
+    cont = input(Fore.YELLOW + Back. RED + "\n\nWould you like to track another IP address? [y/n] " + Style.RESET_ALL + " ")
     if cont == "y" or cont == "Y":
         loop()
     else:
