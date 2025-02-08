@@ -16,6 +16,7 @@ It was made by Spider Anongreyhat and credit goes to AnonyminHack5
 <p>$ sudo apt install git</p>
 <p>$ sudo apt install python3</p>
 <p>$ git clone https://github.com/spider863644/Ip-Tracker</p>
+<p>$ cd Ip-Tracker</p>
 <p>$ python3 tracker.py</p>
 
 <h2>🔰Support Me🔰</h2>
